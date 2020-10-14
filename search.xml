@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title>categories</title>
-      <link href="2020/10/14/categories/"/>
-      <url>2020/10/14/categories/</url>
-      
-        <content type="html"><![CDATA[<h2 id="카테고리"><a href="#카테고리" class="headerlink" title="카테고리"></a>카테고리</h2><p><a href="">전체보기</a><br><a href="">iOS</a><br><a href="">Post</a><br><a href="">Post</a><br><a href="">기타</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>REST API - Codable</title>
       <link href="2020/10/13/POST/REST-API-Codable/"/>
       <url>2020/10/13/POST/REST-API-Codable/</url>
@@ -947,9 +934,9 @@
       
         <tags>
             
-            <tag> Swift </tag>
-            
             <tag> Textfield </tag>
+            
+            <tag> Swift </tag>
             
             <tag> UIKeyboardType </tag>
             
@@ -1723,9 +1710,9 @@
             
             <tag> TextField </tag>
             
-            <tag> TextFieldDelegate </tag>
-            
             <tag> 로그인화면 </tag>
+            
+            <tag> TextFieldDelegate </tag>
             
         </tags>
       
@@ -1752,9 +1739,9 @@
             
             <tag> TextField </tag>
             
-            <tag> TextFieldDelegate </tag>
-            
             <tag> 로그인화면 </tag>
+            
+            <tag> TextFieldDelegate </tag>
             
         </tags>
       
@@ -1810,9 +1797,9 @@
             
             <tag> TextField </tag>
             
-            <tag> 로그인화면 </tag>
-            
             <tag> keyboard </tag>
+            
+            <tag> 로그인화면 </tag>
             
         </tags>
       
@@ -2244,7 +2231,7 @@
       <link href="2020/04/26/My-Hexo/"/>
       <url>2020/04/26/My-Hexo/</url>
       
-        <content type="html"><![CDATA[<p><img src="/image/like.jpeg" class="lazyload" data-srcset="/image/like.jpeg" srcset="data:image/png;base64,666" alt=""></p>]]></content>
+        <content type="html"><![CDATA[<p><img src="/image/like.jpeg" alt="" class="φcx"></p>]]></content>
       
       
       
