@@ -1,44 +1,1507 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<title>[Swift]Contacts - 연락처 정보가져오기 - Qussk</title>
-<base href="/">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-<link rel="canonical" href="https://qussk.github.io/2020/08/08/Swift-Contacts-%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%A0%95%EB%B3%B4%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">
-<link rel="icon" type="image/x-icon" href="/image/Lemon.png">
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<meta name="description" content="Contacts을 이용하여, 앱으로 연락처 정보를 가져오기,! 들어가기 전에 아래 CNContact에 대한 애플문서를 확인하자. 링크 : https:&#x2F;&#x2F;developer.apple.com&#x2F;documentation&#x2F;contacts&#x2F;cncontact 문서를 요약하자면,  오른쪽의 정보들을 가져온다는 뜻. 나는 phoneNumbers와 class func des">
-<meta property="og:type" content="website">
-<meta property="og:title" content="[Swift]Contacts - 연락처 정보가져오기">
-<meta property="og:url" content="https://qussk.github.io/2020/08/08/Swift-Contacts-%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%A0%95%EB%B3%B4%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/index.html">
-<meta property="og:site_name" content="Qussk">
-<meta property="og:description" content="Contacts을 이용하여, 앱으로 연락처 정보를 가져오기,! 들어가기 전에 아래 CNContact에 대한 애플문서를 확인하자. 링크 : https:&#x2F;&#x2F;developer.apple.com&#x2F;documentation&#x2F;contacts&#x2F;cncontact 문서를 요약하자면,  오른쪽의 정보들을 가져온다는 뜻. 나는 phoneNumbers와 class func des">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=160">
-<meta property="article:published_time" content="2020-08-08T09:52:18.000Z">
-<meta property="article:modified_time" content="2020-09-14T08:28:54.118Z">
-<meta property="article:author" content="Qussk님">
-<meta property="article:tag" content="Swift">
-<meta property="article:tag" content="Contacts">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=160">
+  <!-- 页面元数据 -->
+  
+  <title>[Swift]Contacts - 연락처 정보가져오기 - Qussk</title>
+  
+    <meta name="keywords" content="Swift,Contacts">
+  
+
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script id="loadcss"></script>
+
+</head>
+
+<body>
+  
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>전체보기
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>카테고리
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>태그
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>액티브
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>friends
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>about
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>전체보기
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>카테고리
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>태그
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>액티브
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>friends
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>about
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  <div id="l_body">
+    <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Qussk님의 블로그</p>
+    
+    
+      <p class="subtitle">iOS개발자. Qussk의 기술블로그🐛</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/v4/getting-started/"
+              
+              
+              id="v4getting-started">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>A</p>
+            </a>
+          
+            <a href="/faqs/"
+              
+              
+              id="faqs">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg'><p>B</p>
+            </a>
+          
+            <a href="/examples/"
+              
+              
+              id="examples">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg'><p>C</p>
+            </a>
+          
+            <a href="/contributors/"
+              
+              
+              id="contributors">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg'><p>D</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>E</p>
+            </a>
+          
+            <a href="https://github.com/Qussk"
+              
+              
+              id="https:githubcomQussk">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg'><p>github</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+    <div id='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
 
 
-<link href="//fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata|Josefin+Sans|Montserrat" rel="stylesheet">
-<link href="/styles.c3f8d35f4c49a6d852da.css" rel="stylesheet">
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        [Swift]Contacts - 연락처 정보가져오기
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>请设置文章作者</p>
+  </a>
+</div>
 
-<link rel="stylesheet" href="/theme.314ef3333f4a74bf9aac.css" is="theme">
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/ios/">ios</a>
+    </a>
+  </div>
 
 
-<script src="/config.60f08feef61f9b3783bc.js"></script>
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Aug 8, 2020</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="[Swift]Contacts - 연락처 정보가져오기" data-path="/2020/08/08/Swift-Contacts-%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%A0%95%EB%B3%B4%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-<body lang="en">
-<is-a></is-a>
-<script src="/runtime.1720a40670866f12654e.js"></script>
-<script src="/polyfills.eefc5b1aaca1e85d221f.js"></script>
-<script src="/main.41823d1d138ca02e839b.js"></script>
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <p>Contacts을 이용하여, 앱으로 연락처 정보를 가져오기,!</p>
+<p>들어가기 전에 아래 CNContact에 대한 애플문서를 확인하자.</p>
+<p><a href="https://developer.apple.com/documentation/contacts/cncontact" target="_blank">링크 : https://developer.apple.com/documentation/contacts/cncontact</a></p>
+<p>문서를 요약하자면,</p>
+<p><img src="/image/Contact3.png" class="lazyload" data-srcset="/image/Contact3.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>오른쪽의 정보들을 가져온다는 뜻.</p>
+<p>나는 phoneNumbers와</p>
+<p>class func descriptorForAllComparatorKeys() -&gt; CNKeyDescriptor<br>
+(연락처 정렬 비교기에 필요한 모든 키를 가져옵니다.)을 이용해 fullname을 가져왔다.</p>
+<p>자세한 내용은<br>
+아래 코드에서 주석으로 숫자를 달았는데, 코드와 비교해보면서 읽어보길 바란다!</p>
+<h2 id="1.-viewcontroller">1. ViewController<a title="#1.-viewcontroller" href="#1.-viewcontroller"></a></h2>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"><span class="keyword">import</span> Contacts</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> tableView = <span class="type">UITableView</span>(frame: .zero, style: .grouped)</span><br><span class="line">  <span class="keyword">var</span> objects = [<span class="type">CNContact</span>]() <span class="comment">//1-1.</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">    </span><br><span class="line">    tableView.dataSource = <span class="keyword">self</span></span><br><span class="line">    tableView.delegate = <span class="keyword">self</span></span><br><span class="line">    </span><br><span class="line">    tableView.rowHeight = <span class="number">80</span></span><br><span class="line">    tableView.backgroundColor = .white</span><br><span class="line">    view.addSubview(tableView)</span><br><span class="line">    </span><br><span class="line">    tableView.register(testTableViewCell.<span class="keyword">self</span>, forCellReuseIdentifier: <span class="string">"testTableViewCell"</span>)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    findContactsOnBackgroundThread &#123; (contacts) <span class="keyword">in</span></span><br><span class="line">      <span class="keyword">self</span>.objects = contacts!</span><br><span class="line">      <span class="keyword">self</span>.tableView.reloadData()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    tableView.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></span><br><span class="line">    </span><br><span class="line">    <span class="type">NSLayoutConstraint</span>.activate([</span><br><span class="line">      tableView.topAnchor.constraint(equalTo: view.topAnchor),</span><br><span class="line">      tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),</span><br><span class="line">      tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),</span><br><span class="line">      tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)</span><br><span class="line">    ])</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">findContactsOnBackgroundThread</span> <span class="params">(<span class="number">_</span> completionHandler: @escaping <span class="params">(<span class="number">_</span> contacts:[CNContact]?)</span></span></span>-&gt;()) &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="type">DispatchQueue</span>.global(qos: .background).async(execute: &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">      </span><br><span class="line">      <span class="comment">//1-2.</span></span><br><span class="line">      <span class="keyword">let</span> keysToFetch = [<span class="type">CNContactFormatter</span>.descriptorForRequiredKeys(<span class="keyword">for</span>: .fullName), <span class="type">CNContactPhoneNumbersKey</span>] <span class="keyword">as</span> [<span class="type">Any</span>]</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">let</span> fetchRequest = <span class="type">CNContactFetchRequest</span>( keysToFetch: keysToFetch <span class="keyword">as</span>! [<span class="type">CNKeyDescriptor</span>])</span><br><span class="line">      </span><br><span class="line">      <span class="comment">/* This is the array of objects that will be passed into the completion block.</span></span><br><span class="line"><span class="comment">       And then retrieved as the objects array</span></span><br><span class="line"><span class="comment">      objects 배열이 데이터를 검색함.</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line">      <span class="keyword">var</span> contacts = [<span class="type">CNContact</span>]()</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//1-3.</span></span><br><span class="line">      <span class="type">CNContact</span>.localizedString(forKey: <span class="type">CNLabelPhoneNumberiPhone</span>)</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">if</span> #available(iOS <span class="number">10.0</span>, *) &#123;</span><br><span class="line">        fetchRequest.mutableObjects = <span class="literal">false</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Fallback on earlier versions</span></span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//1-4.</span></span><br><span class="line">      fetchRequest.unifyResults = <span class="literal">true</span></span><br><span class="line">      fetchRequest.sortOrder = .userDefault</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">      <span class="comment">//연락처를 가져오는 중 에러남. 성공을 위해 do/try/catch block 필요.</span></span><br><span class="line">      <span class="comment">//1-5.</span></span><br><span class="line">     <span class="keyword">do</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// For each CNContact in your phone...</span></span><br><span class="line">        <span class="keyword">try</span> <span class="type">CNContactStore</span>().enumerateContacts(with: fetchRequest) &#123; (contact, stop) -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">          <span class="comment">//연락처를 정렬</span></span><br><span class="line">  </span><br><span class="line">          <span class="comment">// If this contact has a phone number, append to the array</span></span><br><span class="line">          <span class="keyword">if</span> contact.phoneNumbers.<span class="built_in">count</span> &gt; <span class="number">0</span> &#123;</span><br><span class="line">            contacts.append(contact)</span><br><span class="line">          &#125;</span><br><span class="line">          </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Catch the error, if it exists</span></span><br><span class="line">      &#125; <span class="keyword">catch</span> <span class="keyword">let</span> e <span class="keyword">as</span> <span class="type">NSError</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(e.localizedDescription)</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="type">DispatchQueue</span>.main.async(execute: &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">        <span class="comment">//완성되면 contacts 배열을 제공</span></span><br><span class="line">        completionHandler(contacts)</span><br><span class="line">        </span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//MARK: -UITableViewDataSource</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span>: <span class="title">UITableViewDataSource</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> objects.<span class="built_in">count</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"testTableViewCell"</span>, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! testTableViewCell</span><br><span class="line"> </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> contact = <span class="keyword">self</span>.objects[indexPath.row]</span><br><span class="line">    </span><br><span class="line">    configureCell(cell, contact: contact)</span><br><span class="line">    <span class="keyword">return</span> cell</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span>: <span class="title">UITableViewDelegate</span></span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, heightForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">80</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">configureCell</span><span class="params">(<span class="number">_</span> cell: testTableViewCell, contact: CNContact)</span></span> &#123;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">let</span> formatter = <span class="type">CNContactFormatter</span>()</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">let</span> contactPhoneNumber = (contact.phoneNumbers[<span class="number">0</span>].value).value(forKey: <span class="string">"digits"</span>) <span class="keyword">as</span>? <span class="type">String</span></span><br><span class="line">      </span><br><span class="line">      cell.personName.text = formatter.string(from: contact)</span><br><span class="line">      cell.conditionMassge.text = contactPhoneNumber</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>일단 테스트용으로 만든거라… viewDidLoad가 빵빵 ㅎㅎ…</p>
+<ul>
+<li>
+<p>1-1. <strong>objects = <a href="">CNContact</a></strong> 는 CNContact(연락처)의 배열을 담은 객체</p>
+</li>
+<li>
+<p>1-2. <strong>연락처비교 : class func descriptorForAllComparatorKeys() -&gt;. CNKeyDescriptor<br>
+(연락처 정렬 비교기에 필요한 모든 키를 가져옴.)</strong></p>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> keysToFetch = [<span class="type">CNContactFormatter</span>.descriptorForRequiredKeys(<span class="keyword">for</span>: .fullName), <span class="type">CNContactPhoneNumbersKey</span>] <span class="keyword">as</span> [<span class="type">Any</span>]</span><br></pre></td></tr></table></figure>
+<p><strong>keysToFetch</strong>는 CNContactFormatter의 descriptorForRequiredKeys로 접근하여, <strong>.fullName</strong>을 가져오고 CNContactPhoneNumbersKey에도 접근하도록 하는 그릇이다.</p>
+<p>이 그릇을</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">let</span> fetchRequest = <span class="type">CNContactFetchRequest</span>( keysToFetch: keysToFetch <span class="keyword">as</span>! [<span class="type">CNKeyDescriptor</span>])</span><br><span class="line">```   </span><br><span class="line">fetchRequest에</span><br><span class="line"></span><br><span class="line"><span class="type">CNContactFetchRequest</span>(연락처를 일치시키기위한 술어) 에 <span class="type">CNKeyDescriptor</span>의 배열을 업캐스팅하여 <span class="type">CNKeyDescriptor</span>의 정보를 가져온다.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">CNKeyDescriptor</span>에 대한 정보는 퀵헬퍼로 확인가능. </span><br><span class="line"></span><br><span class="line">![](/image/<span class="type">Contact4</span>.png) </span><br><span class="line"></span><br><span class="line">이렇게 되어있었다 ! ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- <span class="number">1</span>-<span class="number">3</span>. **연락처 데이터 현지화 : </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">localizedString</span>(<span class="title">forKey</span>: <span class="title">String</span>) -&gt; <span class="title">String</span></span></span><br><span class="line"><span class="class">지역화 된 연락처 속성 이름이 포함 된 문자열을 반환.** </span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">```<span class="title">swift</span></span></span><br><span class="line"><span class="class"><span class="title">CNContact</span>.<span class="title">localizedString</span>(<span class="title">forKey</span>: <span class="title">CNLabelPhoneNumberiPhone</span>)</span></span><br><span class="line"><span class="class">   </span></span><br><span class="line"><span class="class">   <span class="title">if</span> #<span class="title">available</span>(<span class="title">iOS</span> 10.0, *) </span>&#123;</span><br><span class="line">     fetchRequest.mutableObjects = <span class="literal">false</span></span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="comment">// Fallback on earlier versions</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>localizedString은 문자열을 반환하는 용도, 그중 CNLabelPhoneNumberiPhone 핸드폰 번호를 가져와 반환시킨다.</p>
+<p>만약 iOS10이하면,<br>
+fetchRequest.mutableObjects = falese로<br>
+string의 값 뮤터블(변수) 변경불가능하게 처리</p>
+<p>이전 버전의 폰이 왔을 때의 대비책인거 같다. 그런데 이미 프로젝트를 13이상에서만 다운할수 있도록 해놔서… ㅎㅎ 안써도될듯하지만… 공부해볼겸 ,!!</p>
+<p>1-4.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1-4.</span></span><br><span class="line"> fetchRequest.unifyResults = <span class="literal">true</span></span><br><span class="line"> fetchRequest.sortOrder = .userDefault</span><br></pre></td></tr></table></figure>
+<p><strong>unifyResults</strong>현재 연락처가 통합 연락처이고 지정된 식별자를 가진 연락처를 포함하는지 여부를 나타내는 Bool값. <strong>sortOrder</strong> 연락처의 정렬 순서를 나타냄</p>
+<p>1-5. 연락처의 열거가 성공적으로 실행되었는지 판단. (ㅇㅖ외사항 처리)<br>
+<em>do/try/catch /block</em>을 이용해 오류 판단.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="comment">//1-5.</span></span><br><span class="line">  <span class="comment">// For each CNContact in your phone...</span></span><br><span class="line">  <span class="keyword">try</span> <span class="type">CNContactStore</span>().enumerateContacts(with: fetchRequest) &#123; (contact, stop) -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">    <span class="comment">//연락처를 정렬</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// If this contact has a phone number, append to the array</span></span><br><span class="line">    <span class="keyword">if</span> contact.phoneNumbers.<span class="built_in">count</span> &gt; <span class="number">0</span> &#123;</span><br><span class="line">      contacts.append(contact)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>do 나는 try하겠다, CNContactStore()을 통해, enumerateContacts(연락처 가져 오기 요청과 일치하는 모든 연락처의 열거가 성공적으로 실행되었는지 여부를 나타내는 부울 값을 반환)에 접근 ~ fetchRequest(검색 기준을 지정하는 연락처 가져 오기 요청.<br>
+)을 요청하여 (contact(성공), stop(오류))시 에 대한 정보 클로저 이용하여 성공 및 오류사항 정의.</p>
+<p>만약 성공시, contact.phoneNumbers.count &gt; 0 { 이면 contxts.append(contact)<br>
+그냥 정렬한다는 소리…</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#125; <span class="keyword">catch</span> <span class="keyword">let</span> e <span class="keyword">as</span> <span class="type">NSError</span> &#123;</span><br><span class="line">       <span class="built_in">print</span>(e.localizedDescription)</span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line">     <span class="type">DispatchQueue</span>.main.async(execute: &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">       <span class="comment">//완성되면 contacts 배열을 제공</span></span><br><span class="line">       completionHandler(contacts)</span><br><span class="line">       </span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>만약 에러나면, e.localizedDescription을 프린트하고, 어씽크(시분할방식 - 비동기) 통해 completionHandler(비동기 완료시점)에 (contacts)반환 (Void를 반환)하여 오류가 반환됨.</p>
+<p>이 메서드는 열거가 완료 될 때까지 기다리기 때문에, 결과가 없으면 블록이 호출되지 않고 메서드가 true를 반환한다.<br>
+모든 연락처를 한 번에 메모리에 보관하지 않고 모든 연락처를 가져오기 때문에 비용이 많이 든다.</p>
+<p>연락처 가져 오기 요청과 일치하는 모든 연락처의 열거가 성공적으로 실행되면 true이고, 그렇지 않으면 거짓</p>
+<p>휴… 동기/비동기를 다시 한번 훑어봐야겠다…<br>
+<a href="https://m.blog.naver.com/PostView.nhn?blogId=jdub7138&amp;logNo=220937372865&amp;proxyReferer=https:%2F%2Fwww.google.com%2F" target="_blank">동기/비동기 참고하기</a></p>
+<p>셀 부분은 그냥 코드보면 대충 무슨 뜻인지 알것이라 생각하고 cell로 넘어가자.</p>
+<h2 id="2.-testtableviewcell">2. testTableViewCell<a title="#2.-testtableviewcell" href="#2.-testtableviewcell"></a></h2>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">testTableViewCell</span>: <span class="title">UITableViewCell</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">let</span> identifier = <span class="string">"testTableViewCell"</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> personImage = <span class="type">UIImageView</span>()</span><br><span class="line">      <span class="keyword">let</span> personName = <span class="type">UILabel</span>()</span><br><span class="line">      <span class="keyword">let</span> conditionMassge = <span class="type">UILabel</span>()</span><br><span class="line">      <span class="keyword">let</span> inPerson = <span class="type">UIButton</span>()</span><br><span class="line">  </span><br><span class="line"><span class="comment">//      let personAddButton = UIButton()</span></span><br><span class="line">  </span><br><span class="line">        <span class="keyword">override</span> <span class="keyword">init</span>(style: <span class="type">UITableViewCell</span>.<span class="type">CellStyle</span>, reuseIdentifier: <span class="type">String?</span>) &#123;</span><br><span class="line">          <span class="keyword">super</span>.<span class="keyword">init</span>(style: style, reuseIdentifier: reuseIdentifier)</span><br><span class="line">          </span><br><span class="line">          selectionStyle = .<span class="keyword">none</span></span><br><span class="line">          </span><br><span class="line">          personImage.backgroundColor = .systemGray4</span><br><span class="line">          personImage.image = <span class="type">UIImage</span>(systemName: <span class="string">"person"</span>)</span><br><span class="line">          personImage.tintColor = .lightGray</span><br><span class="line">          personImage.layer.cornerRadius = <span class="number">15</span></span><br><span class="line">          contentView.addSubview(personImage)</span><br><span class="line">          </span><br><span class="line">          personName.text = <span class="string">"이름"</span></span><br><span class="line">         <span class="comment">// personName.font = UIFont.boldSystemFont(ofSize: 17)</span></span><br><span class="line">          conditionMassge.font = <span class="type">UIFont</span>(name: <span class="string">"PingFangHK-Medium"</span>, size: <span class="number">17</span>)</span><br><span class="line">          contentView.addSubview(personName)</span><br><span class="line">          </span><br><span class="line">          conditionMassge.text = <span class="string">"즐거운 하루~~ 빛나는 미래가 보여🐶"</span></span><br><span class="line">          conditionMassge.font = <span class="type">UIFont</span>(name: <span class="string">"PingFangHK-Thin"</span>, size: <span class="number">14</span>)</span><br><span class="line">          conditionMassge.textColor = .gray</span><br><span class="line">          contentView.addSubview(conditionMassge)</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  conditionCheck.text = "21분전"</span></span><br><span class="line">          inPerson.setTitle(<span class="string">"+ 초대"</span>, <span class="keyword">for</span>: .normal)</span><br><span class="line">          inPerson.titleLabel?.font = <span class="type">UIFont</span>(name: <span class="string">"PingFangHK-Medium"</span>, size: <span class="number">12</span>)</span><br><span class="line">          inPerson.setTitleColor(.black, <span class="keyword">for</span>: .normal)</span><br><span class="line">          inPerson.layer.borderColor = <span class="type">UIColor</span>.black.cgColor</span><br><span class="line">          inPerson.backgroundColor = .yellow</span><br><span class="line">          inPerson.layer.borderWidth = <span class="number">1</span></span><br><span class="line">          inPerson.layer.cornerRadius = contentView.frame.width/<span class="number">23</span></span><br><span class="line">          contentView.addSubview(inPerson)</span><br><span class="line">          </span><br><span class="line">          setConstrain()</span><br><span class="line">          </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">      <span class="function"><span class="keyword">func</span> <span class="title">setConstrain</span><span class="params">()</span></span>&#123;</span><br><span class="line">        </span><br><span class="line">        레이아웃은 생략..</span><br><span class="line"></span><br><span class="line">        ])</span><br><span class="line">        </span><br><span class="line">      &#125;</span><br><span class="line">        <span class="keyword">required</span> <span class="keyword">init</span>?(coder aDecoder: <span class="type">NSCoder</span>) &#123;</span><br><span class="line">          <span class="built_in">fatalError</span>(<span class="string">"init(coder:) has not been implemented"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위의 vc가 연락처목록을 가져오는 tablewView였다면, estTableViewCell은<br>
+그에 대한 셀이다.</p>
+<p>테스트용으로 만든것이라서… 변수명이 좀 헷깔릴 수 있는데</p>
+<p>conditionMassge가 폰넘버에 해당된다. 원래 상태메세지 가져오는 걸 구현할 계획이었던거라… 번호는 사실 셀에 표현안되어도 되지만 눈으로 확인하기 위해 여기다가 뿌렸다…ㅋㅋㅋ…</p>
+<p>아래 이미지를 보면 이해가 더 쉬울것 같다. 🙂</p>
+<p><img src="/image/Contacts.png" class="lazyload" data-srcset="/image/Contacts.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>이러케 ㅎㅎ…</p>
+<p>어쨌든 나는 이름과 폰넘버만 가져왔지만,<br>
+필드만 지정해주면 연락처상에 저장된 모든 데이터(NCContact)를 통해 메모,이메일, 기념일?등도 가져올 수 있다는점 !!!</p>
+<p>그리고 폰넘버가 만약 2개 저장된 정보라면, 가장 상단에 있는 값을 가져온다는 점!</p>
+<p>알아두면 좋을 듯 하다!</p>
+
+  
+    <div class='div-ori-link'>
+      <a class='ori-link' href='/2020/08/08/Swift-Contacts-%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%A0%95%EB%B3%B4%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0'>
+        Read Original
+      </a>
+    </div>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://qussk.github.io/2020/08/08/Swift-Contacts-%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%A0%95%EB%B3%B4%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/>https://qussk.github.io/2020/08/08/Swift-Contacts-%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%A0%95%EB%B3%B4%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-14T17:28:54+09:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Sep 14, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Swift/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Swift</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Contacts/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Contacts</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://qussk.github.io/2020/08/08/Swift-Contacts-%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%A0%95%EB%B3%B4%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/&title=[Swift]Contacts - 연락처 정보가져오기 - Qussk&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qussk.github.io/2020/08/08/Swift-Contacts-%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%A0%95%EB%B3%B4%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/&title=[Swift]Contacts - 연락처 정보가져오기 - Qussk&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://qussk.github.io/2020/08/08/Swift-Contacts-%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%A0%95%EB%B3%B4%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/&title=[Swift]Contacts - 연락처 정보가져오기 - Qussk&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2020/08/10/Swift-Textfield-%ED%84%B0%EC%B9%98%EC%8B%9C-%ED%82%A4%EB%B3%B4%EB%93%9C%EB%82%B4%EB%A6%AC%EA%B8%B0-%EB%A6%AC%ED%84%B4%EC%8B%9C-%EC%BB%A4%EC%84%9C%EC%9D%B4%EB%8F%99/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>[Swift]Textfield 터치시 키보드내리기, 리턴시 커서이동(resignFirstResponder())</p>
+          <p class='content'>delegate = slef선언
+12idTextField.delegate = selfpwTextField.delegate = self
+UITextFieldDelegate
+12...</p>
+        </a>
+      
+      
+        <a class='next' href='/2020/08/08/Swift-Custom-Tabbar/'>
+          <p class='title'>[Swift]Custom Tabbar<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>UITabbarController에 구애받지 않고 ViewController로 Tabbar 만들기!
+참고한 사이트 :
+
+https://milyo-codingstories.ti...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1.-viewcontroller"><span class="toc-text">1. ViewController</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2.-testtableviewcell"><span class="toc-text">2. testTableViewCell</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+        
+        
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="[Swift]Contacts - 연락처 정보가져오기";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+</script>
+
+        
+      </div>
+      
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.1" target="_blank" class="codename">Volantis</a>
+        as theme
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+      <a id="s-top" class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+  </div>
+  <div>
+    <script>
+window.volantis={};
+/********************脚本懒加载函数********************************/
+function loadScript(src, cb) {
+var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+var script = document.createElement('script');
+script.setAttribute('type','text/javascript');
+if (cb) script.onload = cb;
+script.setAttribute('src', src);
+HEAD.appendChild(script);
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+  
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: path,
+      appId: "",
+      appKey: "",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      recordIP: 'false',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+(function ($) {
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+})(jQuery);
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://Qussk.github.io' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://Qussk.github.io' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://Qussk.github.io' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#l_cover",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
+        
+        
+        
+        
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
 </body>
 </html>

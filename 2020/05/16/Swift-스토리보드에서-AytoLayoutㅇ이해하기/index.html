@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>[Swift]스토리보드에서 AutoLayout이해하기 - Qussk</title>
+  
+    <meta name="keywords" content="Swift,AutoLayout,UIView">
+  
+
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script id="loadcss"></script>
+
+</head>
+
+<body>
+  
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>전체보기
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>카테고리
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>태그
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>액티브
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>friends
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>about
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>전체보기
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>카테고리
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>태그
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>액티브
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>friends
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>about
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  <div id="l_body">
+    <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Qussk님의 블로그</p>
+    
+    
+      <p class="subtitle">iOS개발자. Qussk의 기술블로그🐛</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/v4/getting-started/"
+              
+              
+              id="v4getting-started">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>A</p>
+            </a>
+          
+            <a href="/faqs/"
+              
+              
+              id="faqs">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg'><p>B</p>
+            </a>
+          
+            <a href="/examples/"
+              
+              
+              id="examples">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg'><p>C</p>
+            </a>
+          
+            <a href="/contributors/"
+              
+              
+              id="contributors">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg'><p>D</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>E</p>
+            </a>
+          
+            <a href="https://github.com/Qussk"
+              
+              
+              id="https:githubcomQussk">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg'><p>github</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+    <div id='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+      <a title='[Swift]스토리보드에서 AutoLayout이해하기' href='/2020/05/15/Swift-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C%EC%97%90%EC%84%9C-AytoLayout%E3%85%87%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0'>
+        <img class='thumbnail' src='/image/auto-1.png'>
+      </a>
+    
+    
+      <h1 class="title">
+        [Swift]스토리보드에서 AutoLayout이해하기
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/ios/">ios</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：May 16, 2020</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="[Swift]스토리보드에서 AutoLayout이해하기" data-path="/2020/05/16/Swift-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C%EC%97%90%EC%84%9C-AytoLayout%E3%85%87%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <h2 id="laying-out-a-user-interface">Laying out a user interface<a title="#laying-out-a-user-interface" href="#laying-out-a-user-interface"></a></h2>
+<p>애플에서 지원하는 레이아웃에 대한 접근 방식은 총 3가지가 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[유저 인터페이스 구성을 위한 3가지 주요 접근 방식]</span><br><span class="line">Frame 기반의 프로그래밍 방식</span><br><span class="line">Autoresizing masks</span><br><span class="line">Auto Layout</span><br></pre></td></tr></table></figure>
+<p>첫번째 <strong>Frame 기반의 프로그래밍 방식</strong>은 코드를 이용한 방식이다.</p>
+<p>(Frame 기반의 프로그래밍 방식은 다음 포스트에서 할 계획이다.)</p>
+<p>두번째 <strong>Autoresizing masks</strong>은 기본적으로 제공되는 레이아웃이라고 생각하면 되는데(만약 내가 작성한 코드나 직접 Auto Layout을 사용하게될 경우에는 translatesAutoresizingMaskIntoConstraints 값을 false로 지정해야만 한다.) Autoresizing masks에 대한 자세한 이해가 필요하다면, 아래의 링크에서 확인하길 바란다.</p>
+<p><a href="https://www.thecodedself.com/autoresizing-masks/" target="_blank">https://www.thecodedself.com/autoresizing-masks/</a></p>
+<p>그리고 세번째인 <strong>Auto Layout</strong> 은 스토리보드 상에서 레이아웃을 잡는 방식이다.</p>
+<p>오늘은 스토리보드 상에서 레이아웃을 잡을 수 있는 기능인 오토레이아웃에 대해서 알아볼 것인데,</p>
+<p>들어가기 전에 가장 기본이 되는 Autoresizing의 구조를 한 번 훑고 지나가자.</p>
+<h2 id="autoresizing-기본구조">Autoresizing 기본구조<a title="#autoresizing-기본구조" href="#autoresizing-기본구조"></a></h2>
+<p>스토리보드에서 UIView를 만들면 우측 사이즈 인스펙터 탭에 Autoresizing가 보이는 것을 시각적으로 확인할 수 있다.</p>
+<p><img src="/image/auto-3.png" class="lazyload" data-srcset="/image/auto-3.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>대충 이런 느낌인데, 빨간색 선이 곧 View의 저 좌측 꼭지점 부분을 가리킨다고 보면 된다. (서로 매칭하면서 생각하면 쉽다.)</p>
+<p><img src="/image/auto-2.png" class="lazyload" data-srcset="/image/auto-2.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>이런식으로… (그림과 함께 보면 더 쉽다…)</p>
+<p><img src="/image/auto-1.png" class="lazyload" data-srcset="/image/auto-1.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>주의할 점은 꼭 필요한 부분만 빨간색 선이 나오도록 클릭해주는 것이다…(남발하면 작동안됨… 컴퓨터가 어디를 기준으로 줘야하는지 모르는 상태가 되어버리니까… 기준은 명확하게 !)</p>
+<p>그리고 만약</p>
+<p><img src="/image/auto-4.png" class="lazyload" data-srcset="/image/auto-4.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>이런 식으로 오른쪽에 기준을 준 뒤,</p>
+<p><img src="image/auto-5.png" class="lazyload" data-srcset="image/auto-5.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>검정색 부분의 꼭지점을 잡고 왼쪽으로 드래그하면, 빨간색 부분인 오른쪽이 고정된 채로 노란 뷰가 줄어 듦을 알 수 있다.</p>
+<p>이와 같이 여러 방법으로 움직여보면 Autoresizing 어떤 방식으로 작동하는지 금방 알 수 있다.</p>
+<p>그리고 UIView의 인스팩터 탭에서는 Autoresizing뿐만아니라, 현재 뷰의 x축,y축,width(넓이),height(높이)에 대한 정보도 볼 수 있으니 참고하자!</p>
+<p>이제 Autoresizing에 대해 어느 정도 훑었으니, 본격적으로 Auto Layout 으로 들어가자.</p>
+<h2 id="auto-layout-이란?">Auto Layout 이란?<a title="#auto-layout-이란?" href="#auto-layout-이란?"></a></h2>
+<p><strong>Auto Layout</strong> 은 뷰에 주어진 제약조건에 따라 뷰의 크기와 위치를 동적으로 계산해 배치하는 것으로, 외부 또는 내부의 변화에 동적으로 반응하여 유저 인터페이스를 구성한다.</p>
+<p>역시 말로 하면 잘모르겠으니 직접 보도록하자.</p>
+<h2 id="auto-layout-활용">Auto Layout 활용<a title="#auto-layout-활용" href="#auto-layout-활용"></a></h2>
+<h3 id="auto-layout-tools">Auto Layout tools<a title="#auto-layout-tools" href="#auto-layout-tools"></a></h3>
+<p><img src="/image/autoMain-1.png" class="lazyload" data-srcset="/image/autoMain-1.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>오토레이아웃에 접근하기 위한 tools이다.</p>
+<p>왼쪽부터,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Update Frames : 제약조건과 맞지 않는 뷰 위치 갱신.</span><br><span class="line">Align : 정렬에 관한 제약사항 설정 </span><br><span class="line">Pin : 간격, 크기, 비율 등에 대한 제약 조건 설정 </span><br><span class="line">Resolve Autolayout Lssues : 오토레이아웃 관련 문제 해결 </span><br><span class="line">Emned In : 컨테이너 뷰 &#x2F; 뷰컨트롤러 추가</span><br></pre></td></tr></table></figure>
+<p>일단 가장 많이 접하게 되는 것은 Pin부분이다. 일단 예제를 통해 익혀보자.</p>
+<h2 id="[auto-layout-잡기]">[Auto Layout 잡기]<a title="#[auto-layout-잡기]" href="#[auto-layout-잡기]"></a></h2>
+<h3 id="값으로-직접-layout잡기">값으로 직접 Layout잡기<a title="#값으로-직접-layout잡기" href="#값으로-직접-layout잡기"></a></h3>
+<p><img src="/image/auto-11.png" class="lazyload" data-srcset="/image/auto-11.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>1-1. UIView를 하나 만들고, Pin을 클릭후 레이아웃의 왼쪽과 위쪽 값을 지정한다. 예제로 20씩 주자.<br>
+(참고로 Auto Layout을 잡을 때는, <strong>Constrain to margins</strong>에 체크를 해제하도록한다. )</p>
+<p>그리고 ** Add 2 Constraints를 클릭하여 내용을 적용한다.</p>
+<p><s>??적용하게 되면 빨간줄이 뜰것이다… ??</s></p>
+<p>빨간줄은 일단 ‘레이아웃에 문제있음’ 정도로 이해하면 될 것 같다. 값이 비어있거나, 값이 맞지 않는 경우(해당 값이 보여진다.)에 빨간줄로 표현된다. 오토 레이아웃을 잡는 다는 것은, 이 것을 파란색 줄로 바꾸는 작업 이라고 생각하면 쉽다. (노란색 줄도 놉…)</p>
+<p>그래서 현재의 상태는 레이아웃이 비어있는 값이 존재하므로, 비어있는 값을 마저 채워 줘야한다! 아래를 보자.</p>
+<p>1-2. 오른쪽과 아래값 지정하기.</p>
+<p><img src="/image/auto-12.png" class="lazyload" data-srcset="/image/auto-12.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>1-1과 마찬가지로 오른쪽과 아래 값을 20씩주고 add를 적용하면, view의 레이아웃이 정상적으로 잡힌 것을 볼 수 있다. (모두 파란줄!!!)</p>
+<p>이 처럼 해당 view에 대한 값을 '완전하고도 명확하게, 지정해주어야 뷰가 어떤 상황에서든 움직이지않고, 안전한 인터페이스를 제공할 수 있게 된다.</p>
+<p>1-3. width와 height로 레이아웃 잡기.</p>
+<p>1-2처럼 모든 테두리에 값을 지정하는 방법도 있지만, 해당 view의 넓이와 높이의 값을 알고 있다면, width와 height로도 지정해 줄 수 있다.</p>
+<p><img src="/image/auto-14.png" class="lazyload" data-srcset="/image/auto-14.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>이런 식으로…  width은 300, height는 500을 줬다.</p>
+<p><img src="/image/auto-15.png" class="lazyload" data-srcset="/image/auto-15.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>적용된 모습.</p>
+<h3 id="add-missing-constraints으로-layout-잡기">Add Missing Constraints으로 Layout 잡기<a title="#add-missing-constraints으로-layout-잡기" href="#add-missing-constraints으로-layout-잡기"></a></h3>
+<p>다른 방법도 한가지 있는데, 위처럼 레이아웃을 일일히 지정할 필요 없이 먼저 UI를 짠 후, 그 값에 맞춰 모두 레이아웃이 잡히는 기능을 한다.<br>
+예를 들면,</p>
+<p><img src="/image/aytoadd-1.png" class="lazyload" data-srcset="/image/aytoadd-1.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>2-1. 뷰를 선택후 아래 세모 모양(Resolve Autolayout Lssues)을 선택 후 ‘Add Missing Constraints’ 클릭</p>
+<p>그러면? 모두 정상적인 파란줄의 레이아웃으로 잘 잡히게 된다.</p>
+<p>2-2. 재지정?(바꾸고 싶엉!)</p>
+<p><img src="/image/aytoadd-2.png" class="lazyload" data-srcset="/image/aytoadd-2.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>만약 뷰를 움직이고, 움직인 뒤의 UI로 레이아웃을 재지정 하고 싶은 경우.  다시 뷰를 선택후 아래 세모 모양(Resolve Autolayout Lssues)을 선택하면 ‘Update Constranit Constants’ 를 확인 할 수 있다.</p>
+<p>현재 뷰가 이동한 자리로 레이아웃을 다시 업데이트 해준다는 뜻이다.</p>
+<p>클릭하면?</p>
+<p><img src="/image/aytoadd-3.png" class="lazyload" data-srcset="/image/aytoadd-3.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>지울 필요없이 자동적으로 레이아웃이 재설정 되는 모습.</p>
+<p>하지만, 사실? 눈대중으로 하는 것이 그렇게 명확하진 않아서? 보통 일일히 지정하는 법을 선호한다.<br>
+(어디까지나 명확하고 정확한 UI를 위해)</p>
+<h3 id="align-tool-으로-잡기">Align Tool 으로 잡기<a title="#align-tool-으로-잡기" href="#align-tool-으로-잡기"></a></h3>
+<p><img src="/image/autoMain-2.png" class="lazyload" data-srcset="/image/autoMain-2.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>Align Tool 중,</p>
+<p>제일 자주 사용하는 것이 아래 2개 “Horizontally in Container”, &quot;Verically in Container&quot;인데, 이는 center값을 기준으로 둔 선의 중앙값으로 이를 배치하겠다는 뜻이 된다.  클릭해보면 손 쉽게, 중앙 값으로, 혹은 중앙값을 기준으로 변경되는 모습을 확인 할 수 있다.</p>
+<h2 id="[auto-layout-값-수정]">[Auto Layout 값 수정]<a title="#[auto-layout-값-수정]" href="#[auto-layout-값-수정]"></a></h2>
+<p>아마 레이아웃을 처음 접해보았다면 뭔가 아주많이? 꼬였을 것이다.</p>
+<p><s>빨간줄 범벅</s></p>
+<p>특히, 값을 변경하고 싶은데 값이 적용은 안되고, 줄만 줄줄히 늘어나는 현상…</p>
+<p><img src="/image/auto-13.png" class="lazyload" data-srcset="/image/auto-13.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>1-1. Pin은 어디까지나 새로 만들어지는 레이아웃에 대해서 제공되는 것이니, 값을 수정하고 싶다면 따로 우측 인스펙터 부분에서 이를 변경 해야한다.</p>
+<p>1-2. 변경할 레이아웃을 선택하고 Edit를 클릭하여 값을 변경하면 뷰 컨트롤러에 적용되는 모습을 확인할 수 있다.</p>
+<p>그리고 아예 없애거나, 지우고 싶다면?</p>
+<h2 id="[auto-layout-취소,-지우기]">[Auto Layout 취소, 지우기]<a title="#[auto-layout-취소,-지우기]" href="#[auto-layout-취소,-지우기]"></a></h2>
+<p><img src="/image/auto-16.png" class="lazyload" data-srcset="/image/auto-16.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>1-1.레이아웃 선을 선택해서 키보드의 지움 버튼(&lt;-)으로 지우거나, 우측 인스펙터 부분을 클릭 후 지움(&lt;-)해주면 지워진다.</p>
+<p><s>애플의 이런 심플함은 가끔 경이롭기까지 하다…</s></p>
+<p>1-2. 레이아웃을 모두 지우는 것도 지원한다.</p>
+<p><img src="/image/auto-17.png" class="lazyload" data-srcset="/image/auto-17.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>뷰를 선택후 아래 세모 모양(Resolve Autolayout Lssues)을 클릭하면, Clear Constraints를 확인 할 수 있다.<br>
+누르면? 뷰에 해당하는 모든 레이아웃이 지워진다.</p>
+<h2 id="[auto-layout-attributes]">[Auto Layout Attributes]<a title="#[auto-layout-attributes]" href="#[auto-layout-attributes]"></a></h2>
+<p><img src="/image/autoMain-3.png" class="lazyload" data-srcset="/image/autoMain-3.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>레이아웃을 짤때 속성을 기억해주면 좋다.</p>
+<p>레이아웃의 지도와 같은 것!</p>
+<h2 id="[anatomy-of-a-constraint]">[Anatomy of a Constraint]<a title="#[anatomy-of-a-constraint]" href="#[anatomy-of-a-constraint]"></a></h2>
+<p><img src="/image/autoMain-4.png" class="lazyload" data-srcset="/image/autoMain-4.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>이것도 구조를 이해하는 것이 좋다. (코드짤 때 도움)</p>
+<h2 id="[safe-area와-view의-차이]">[Safe Area와 View의 차이]<a title="#[safe-area와-view의-차이]" href="#[safe-area와-view의-차이]"></a></h2>
+<p><img src="/image/auto-6.png" class="lazyload" data-srcset="/image/auto-6.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>⬆︎ Sadfe Area는 파란색 영역에 해당한다. (기기에서의 시계, 베터리, 하위 영역을 제외한 직사각형 영역)</p>
+<p><img src="/image/auto-7.png" class="lazyload" data-srcset="/image/auto-7.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>⬆︎ View의 영역 (기기의 모든 전체영역)</p>
+<p>기준을 어디에 두느냐에 따라 레이아웃의 값도 달라지니 꼭 참고하여야할 부분이다.</p>
+<p><img src="/image/auto-7.png" class="lazyload" data-srcset="/image/auto-7.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>Pin에서도 지정할 수있도록 지원되어 있다.</p>
+<p>//iphone8 (20.0,0,0)<br>
+//iphineX (44,0,34,0)</p>
+<h2 id="[frame과-auto-layout]">[Frame과 Auto Layout]<a title="#[frame과-auto-layout]" href="#[frame과-auto-layout]"></a></h2>
+<p><img src="/image/autoMain.png" class="lazyload" data-srcset="/image/autoMain.png" srcset="data:image/png;base64,666" alt="이미지" class="φcx lazyload"></p>
+<p>이미지를 살펴보면 Auto Layout이 지원되는 방식을 알 수 있다.<br>
+Frame과 Auto Layout 모두 x,y축을 기본값으로 하지만, 왼쪽 이미지인 Frame은 좌표를 중점으로 두고 있다면, Auto Layout은 view사이의 상대적인 값에 중점을 두는 모습을 볼 수 있다.</p>
+<p>그래서, 레이아웃 값을 지정할때, 첫번째 뷰를 먼저 잡고, 이와 가장 근접해 있는 뷰&gt;근접 뷰&gt; 근접 뷰&gt; 근접 뷰&gt;…이런 방식으로 레이아웃을 잡아가는 게 좋다.</p>
+<h3 id="실전-예제-[auto-layou]">실전 예제 [Auto Layou]<a title="#실전-예제-[auto-layou]" href="#실전-예제-[auto-layou]"></a></h3>
+<p>아래의 것을 오토레이 아웃을 이용하여 잡기</p>
+<p><img src="/image/autosample.png" class="lazyload" data-srcset="/image/autosample.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>1-1. 일단 view를 2개 얹고 시작.</p>
+<p><img src="/image/autosample-1.png" class="lazyload" data-srcset="/image/autosample-1.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>오토레이아웃을 이해했다면, 위 화면 정도는 금방 구현해낼 것이다. 하지만, 여기서 문제가 있다. 화면을 아래와 같이 돌리게 되면 ?</p>
+<p><img src="/image/autosample-4.png" class="lazyload" data-srcset="/image/autosample-4.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>이런 식으로 레이아웃이 깨지는 현상을 볼 수 있다. 이것도 기기의 비율에 맞춰 나올 수 있도록 하려면 ?</p>
+<p>1-2 . Equal Width,  Equal Height 활용하기.</p>
+<p><img src="/image/autosample-2.png" class="lazyload" data-srcset="/image/autosample-2.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>레이아웃에 대한 비율을 맞추려면, control키를 누른채 드래그 하여 buleView에서 redView를 잇고 놓으면 위와 같은 목록이 뜬다.여기서 Equal Width,  Equal Height 을 통해 이전 뷰에 대한 비율 맞추기가 가능하다!</p>
+<p>그리고 클릭에서 끝나는게 아니라 우측 탭에서 &quot;Proportional Width(Height) to view&quot;를 확인할 수 있는 데, 꼭 Edit을 눌러서 비율을 '1’로 맞추도록한다. 1:1 비율로 해야하니깐(수치를 다르게 하면서 확인해보도록)</p>
+<p>그러면 ?</p>
+<p><img src="/image/autosample-3.png" class="lazyload" data-srcset="/image/autosample-3.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>가로방향으로 시뮬을 돌려도 레이아웃이 깨지지 않는 모습을 확인할 수 있다.</p>
+<h3 id="실전-예제-[frame]">실전 예제 [frame]<a title="#실전-예제-[frame]" href="#실전-예제-[frame]"></a></h3>
+<p>frame 방식도 위의 실전예제와 동일한 예제로 구현해보자.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">safeViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> view1 = <span class="type">UIView</span>()</span><br><span class="line">  <span class="keyword">let</span> view2 = <span class="type">UIView</span>()</span><br><span class="line"></span><br><span class="line">  <span class="comment">//super.view.adgeAreaInsets</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line"></span><br><span class="line">      view1.backgroundColor = .red</span><br><span class="line">      view.addSubview(view1)</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">       view2.backgroundColor = .blue</span><br><span class="line">       view.addSubview(view2)</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewWillAppear(animated)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"view.viewWillAppear"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillLayoutSubviews</span><span class="params">()</span></span> &#123; <span class="comment">//뷰의 크기가 바뀌었을때, 위치를 바꿔주는 역할. (이곳에 쓰는게 정확.</span></span><br><span class="line">     <span class="keyword">super</span>.viewWillLayoutSubviews()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> margin: <span class="type">CGFloat</span> = <span class="number">20</span></span><br><span class="line">       <span class="keyword">let</span> padding: <span class="type">CGFloat</span> = <span class="number">10</span></span><br><span class="line">       <span class="keyword">let</span> safeLayoutInset = view.safeAreaInsets</span><br><span class="line">       <span class="keyword">let</span> horizontalInset = safeLayoutInset.<span class="keyword">left</span> + safeLayoutInset.<span class="keyword">right</span></span><br><span class="line">       </span><br><span class="line">       <span class="keyword">let</span> yOffset = safeLayoutInset.top + margin</span><br><span class="line">       <span class="keyword">let</span> viewWidth = (view.frame.width - padding - horizontalInset) / <span class="number">2</span> - margin</span><br><span class="line">       </span><br><span class="line">       </span><br><span class="line">       view1.frame = <span class="type">CGRect</span>(x: safeLayoutInset.<span class="keyword">left</span> + margin, y: yOffset, width: viewWidth, height: view.bounds.height - yOffset - (safeLayoutInset.bottom + margin))</span><br><span class="line">      </span><br><span class="line">       </span><br><span class="line">       view2.frame = <span class="type">CGRect</span>(</span><br><span class="line">         origin : <span class="type">CGPoint</span>(x: view1.frame.maxX + padding, y: yOffset),</span><br><span class="line">         size: view1.bounds.size) <span class="comment">//frame넣든, bounds넣든 관계없음.</span></span><br><span class="line">       </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewSafeAreaInsetsDidChange</span><span class="params">()</span></span> &#123; <span class="comment">//세이프에어리얼과 인셋을 바꿔주는 시점을 알려주는 역할. //safeArea(세이프 영역)</span></span><br><span class="line">    <span class="keyword">super</span>.viewSafeAreaInsetsDidChange()</span><br><span class="line">    <span class="built_in">print</span>(view.safeAreaInsets)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewDidAppear(animated)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"viewDisAppear"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위 코드는 스토리보드 방식이 아닌, frame 방식을 이용하여 화면을 구현한 것이다.<br>
+frame을 이용했다면, 레이아웃을 굳이 잡지 않아도 된다.</p>
+<p>다만, 사실 코드로 레이아웃을 잡는 방법은 아주 다양하고 ,<br>
+레이아웃의 순번을 통해 UI를 잡거나 하는, (프레임만으로는 표현할 수 없다.) 법을 사용해야할 수도 있다.</p>
+<p>그래서 frame 외, 오토레이아웃 외에도 코드로 레이아웃을 잡는 방법은 아래를 참고하자</p>
+<p>[링크 준비중]</p>
+<p>(심화부분일 수 있는데 익순해지면 간단해진다.)</p>
+<p>어쨌든 이번 포스트에서는 오토레이아웃이지만, 생각보다 손을 많이 대줘야하는?? 오토레이 아웃ㅋㅋ이지만,</p>
+<p>완전하고 안전성있는 UI를 위한 방법이니</p>
+<p>꼭 참고하여 앱을 만들자 !</p>
+<p>🙀</p>
+
+  
+    <div class='div-ori-link'>
+      <a class='ori-link' href='/2020/05/15/Swift-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C%EC%97%90%EC%84%9C-AytoLayout%E3%85%87%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0'>
+        Read Original
+      </a>
+    </div>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://qussk.github.io/2020/05/16/Swift-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C%EC%97%90%EC%84%9C-AytoLayout%E3%85%87%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/>https://qussk.github.io/2020/05/16/Swift-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C%EC%97%90%EC%84%9C-AytoLayout%E3%85%87%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-14T17:28:54+09:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Sep 14, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Swift/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Swift</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/AutoLayout/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>AutoLayout</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/UIView/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>UIView</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://qussk.github.io/2020/05/16/Swift-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C%EC%97%90%EC%84%9C-AytoLayout%E3%85%87%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/&title=[Swift]스토리보드에서 AutoLayout이해하기 - Qussk&pics=/image/auto-1.png&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qussk.github.io/2020/05/16/Swift-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C%EC%97%90%EC%84%9C-AytoLayout%E3%85%87%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/&title=[Swift]스토리보드에서 AutoLayout이해하기 - Qussk&pics=/image/auto-1.png&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://qussk.github.io/2020/05/16/Swift-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C%EC%97%90%EC%84%9C-AytoLayout%E3%85%87%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/&title=[Swift]스토리보드에서 AutoLayout이해하기 - Qussk&pics=/image/auto-1.png&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2020/05/19/Swift-TextField-%ED%82%A4%EB%B3%B4%EB%93%9C%EC%97%90-%EA%B0%80%EB%A0%A4%EC%A7%90-%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>[Swift]TextField 키보드에 가려짐 문제해결</p>
+          <p class='content'>문제직면
+
+텍스트필드를 이용하다보면 위와 같은 문제에 자주 직면하게 될 것이다. 텍스트 필드를 키보드 높이보다 위에 두면 문제는 간단히 해결되겠지만,
+나도 남들처럼 예쁘게 U...</p>
+        </a>
+      
+      
+        <a class='next' href='/2020/05/14/Swift-UserDefault%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0/'>
+          <p class='title'>[Swift]UserDefault로 데이터 저장하기<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>UserDefault 이해하기
+쉽게 말하면, 앱상의 작은 저장공간이라고 생각하면 된다.
+앱을 종료하여도, 사용자의 데이터가 다시 리셋되지 않도록 기억해주는 장치.
+예제로 쉽게...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#laying-out-a-user-interface"><span class="toc-text">Laying out a user interface</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#autoresizing-기본구조"><span class="toc-text">Autoresizing 기본구조</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#auto-layout-이란?"><span class="toc-text">Auto Layout 이란?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#auto-layout-활용"><span class="toc-text">Auto Layout 활용</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#auto-layout-tools"><span class="toc-text">Auto Layout tools</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#[auto-layout-잡기]"><span class="toc-text">[Auto Layout 잡기]</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#값으로-직접-layout잡기"><span class="toc-text">값으로 직접 Layout잡기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add-missing-constraints으로-layout-잡기"><span class="toc-text">Add Missing Constraints으로 Layout 잡기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-tool-으로-잡기"><span class="toc-text">Align Tool 으로 잡기</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#[auto-layout-값-수정]"><span class="toc-text">[Auto Layout 값 수정]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#[auto-layout-취소,-지우기]"><span class="toc-text">[Auto Layout 취소, 지우기]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#[auto-layout-attributes]"><span class="toc-text">[Auto Layout Attributes]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#[anatomy-of-a-constraint]"><span class="toc-text">[Anatomy of a Constraint]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#[safe-area와-view의-차이]"><span class="toc-text">[Safe Area와 View의 차이]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#[frame과-auto-layout]"><span class="toc-text">[Frame과 Auto Layout]</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#실전-예제-[auto-layou]"><span class="toc-text">실전 예제 [Auto Layou]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#실전-예제-[frame]"><span class="toc-text">실전 예제 [frame]</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+        
+        
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="[Swift]스토리보드에서 AutoLayout이해하기";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+</script>
+
+        
+      </div>
+      
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.1" target="_blank" class="codename">Volantis</a>
+        as theme
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+      <a id="s-top" class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+  </div>
+  <div>
+    <script>
+window.volantis={};
+/********************脚本懒加载函数********************************/
+function loadScript(src, cb) {
+var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+var script = document.createElement('script');
+script.setAttribute('type','text/javascript');
+if (cb) script.onload = cb;
+script.setAttribute('src', src);
+HEAD.appendChild(script);
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+  
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: path,
+      appId: "",
+      appKey: "",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      recordIP: 'false',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+(function ($) {
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+})(jQuery);
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://Qussk.github.io' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://Qussk.github.io' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://Qussk.github.io' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#l_cover",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
+        
+        
+        
+        
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>
