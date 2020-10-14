@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>[Swift]Custom Tabbar - Qussk</title>
+  
+    <meta name="keywords" content="Swift,Tabbar">
+  
+
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css">
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script id="loadcss"></script>
+
+</head>
+
+<body>
+  
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>전체보기
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>카테고리
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>태그
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>액티브
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>friends
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>about
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>전체보기
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>카테고리
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>태그
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>액티브
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>friends
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>about
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  <div id="l_body">
+    <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Qussk님의 블로그</p>
+    
+    
+      <p class="subtitle">iOS개발자. Qussk의 기술블로그🐛</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/v4/getting-started/"
+              
+              
+              id="v4getting-started">
+              <i class='fas fa-folder-open fa-fw'></i><p>전체보기</p>
+            </a>
+          
+            <a href="/faqs/"
+              
+              
+              id="faqs">
+              <i class='fas fa-folder-open fa-fw'></i><p>B</p>
+            </a>
+          
+            <a href="/tags/"
+              
+              
+              id="tags">
+              <i class='fas fa-tags fa-fw'></i><p>태그</p>
+            </a>
+          
+            <a href="/contributors/"
+              
+              
+              id="contributors">
+              <i class='fas fa-folder-open fa-fw'></i><p>D</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <i class='fas fa-folder-open fa-fw'></i><p>로그</p>
+            </a>
+          
+            <a href="https://github.com/Qussk"
+              
+              
+              id="https:githubcomQussk">
+              <i class='fas fa-folder-open fa-fw'></i><p>github</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+    <div id='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        [Swift]Custom Tabbar
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>작성자</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/ios/">ios</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>날짜：Aug 8, 2020</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="[Swift]Custom Tabbar" data-path="/2020/08/08/Swift-Custom-Tabbar/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        갯수
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <p>UITabbarController에 구애받지 않고 ViewController로 Tabbar 만들기!</p>
+<p>참고한 사이트 :</p>
+<ul>
+<li><a href="https://milyo-codingstories.tistory.com/m/11" target="_blank">https://milyo-codingstories.tistory.com/m/11</a></li>
+<li><a href="https://dvpzeekke.tistory.com/69" target="_blank">https://dvpzeekke.tistory.com/69</a></li>
+</ul>
+<p>첫번째 방법은 vc에 tabbar를 만들고 스택뷰를 이용하여 버튼 -&gt; 화면 이동의 방식이고,</p>
+<p>두번째 방법은 vc에 collectionView올려서 셀 클릭 -&gt; 화면 이동 의 방식인 거 같은데</p>
+<p>난 첫번째 방법을 사용했다. ㅎㅎ <s>공유해주시는 분들 언제나 감사합니다</s></p>
+<h2 id="1.-baseview">1. BaseView<a title="#1.-baseview" href="#1.-baseview"></a></h2>
+<p><em>베이스가 되는 UIView만들기</em></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseView</span>: <span class="title">UIView</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> titleLabel: <span class="type">UILabel</span> = &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">UILabel</span>()</span><br><span class="line">    &#125;()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/// TitleLabel의 AutoLayout 설정</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">makeTitleLableConstraint</span><span class="params">()</span></span> &#123;</span><br><span class="line">        titleLabel.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></span><br><span class="line">        </span><br><span class="line">        <span class="type">NSLayoutConstraint</span>.activate([</span><br><span class="line">            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),</span><br><span class="line">            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)</span><br><span class="line">            ])</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">init</span>(frame: <span class="type">CGRect</span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(frame: frame)</span><br><span class="line">        addSubview(titleLabel)</span><br><span class="line">        makeTitleLableConstraint()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">required</span> <span class="keyword">init</span>?(coder aDecoder: <span class="type">NSCoder</span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(coder: aDecoder)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>일단 UIView하나가 필요하다. 화면을 담당하는 녀석. 가운데에 콘트롤러마다 &quot;Lable&quot;이 들어가고, 화면마다 lable의 text가 다른데,<br>
+어쨌든 그러한 점을 보면 BaseView를 타입캐스팅 해서 여러개의 콘트롤러들이 본인들 View에 상속을 받는 방식이다.</li>
+</ul>
+<p>아래를 보면 조금 이해가 된다.</p>
+<h2 id="2.-firstview-~-...">2. firstView ~ …<a title="#2.-firstview-~-..." href="#2.-firstview-~-..."></a></h2>
+<p><em>TabbarItem에 해당될 vc만들기</em></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SNSViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">      <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">loadView</span><span class="params">()</span></span> &#123;</span><br><span class="line">             view = <span class="type">BaseView</span>()</span><br><span class="line"></span><br><span class="line">             <span class="keyword">guard</span> <span class="keyword">let</span> ownView = view <span class="keyword">as</span>? <span class="type">BaseView</span> <span class="keyword">else</span> &#123;</span><br><span class="line">                 <span class="keyword">return</span></span><br><span class="line">             &#125;</span><br><span class="line">       </span><br><span class="line">             ownView.titleLabel.text = <span class="string">"First View"</span></span><br><span class="line">         &#125;</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>탭바아이템 3개짜리를 만든다면, 위와 같은 VC이 3개 필요하다.</li>
+<li>나는 [chatVC, snsVC, mywriteVC ] 총 3개로 했다.</li>
+<li>해당 vc에서의 view는 BaseView가 되고, 이것의 이름 정의는 ownView가 된다.</li>
+</ul>
+<h2 id="3.-tabbarview">3. TabbarView<a title="#3.-tabbarview" href="#3.-tabbarview"></a></h2>
+<p><em>TabbatView 디자인하기</em></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomTabbarView</span>: <span class="title">UIView</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> buttonSize: <span class="type">CGFloat</span> = <span class="number">60</span></span><br><span class="line">  <span class="keyword">var</span> buttonBackImageSize: <span class="type">CGFloat</span> = <span class="number">0</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> contentView: <span class="type">UIView</span> = &#123;</span><br><span class="line">    <span class="keyword">let</span> contentView = <span class="type">UIView</span>()</span><br><span class="line">    contentView.backgroundColor = .white</span><br><span class="line">    <span class="keyword">return</span> contentView</span><br><span class="line">  &#125;()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//탭바 아이템</span></span><br><span class="line">  <span class="keyword">let</span> customTabBar: <span class="type">UITabBar</span> = &#123;</span><br><span class="line">    <span class="keyword">let</span> customTabBar = <span class="type">UITabBar</span>()</span><br><span class="line">    customTabBar.backgroundImage = <span class="type">UIImage</span>()</span><br><span class="line">    customTabBar.shadowImage = <span class="type">UIImage</span>()</span><br><span class="line">    <span class="comment">// customTabBar.barTintColor = UIColor(red: 251/255, green: 252/255, blue:157/255, alpha:1)</span></span><br><span class="line">    <span class="comment">// customTabBar.alpha = 0.5</span></span><br><span class="line">    <span class="keyword">return</span> customTabBar</span><br><span class="line">  &#125;()</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> leftStack: <span class="type">ButtonStack</span> = &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">ButtonStack</span>()</span><br><span class="line">  &#125;()</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> centerButtonBackImage: <span class="type">UIImageView</span> = &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">UIImageView</span>()</span><br><span class="line">  &#125;()</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> centerButton: <span class="type">UIButton</span> = &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">UIButton</span>()</span><br><span class="line">  &#125;()</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">makeContentViewConstraint</span><span class="params">()</span></span> &#123;</span><br><span class="line">    contentView.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></span><br><span class="line">    <span class="type">NSLayoutConstraint</span>.activate([</span><br><span class="line">      contentView.centerXAnchor.constraint(equalTo: centerXAnchor),</span><br><span class="line">      contentView.widthAnchor.constraint(equalTo: widthAnchor),</span><br><span class="line">      contentView.topAnchor.constraint(equalTo: topAnchor),</span><br><span class="line">      contentView.bottomAnchor.constraint(equalTo: bottomAnchor),</span><br><span class="line">    ])</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">makeCustomTabBarConstraint</span><span class="params">()</span></span> &#123;</span><br><span class="line">    customTabBar.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></span><br><span class="line">    <span class="type">NSLayoutConstraint</span>.activate([</span><br><span class="line">      customTabBar.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -<span class="number">20</span>),</span><br><span class="line">      customTabBar.centerXAnchor.constraint(equalTo: centerXAnchor),</span><br><span class="line">      <span class="comment">//   customTabBar.heightAnchor.constraint(equalToConstant: 44),</span></span><br><span class="line">      customTabBar.widthAnchor.constraint(equalTo: widthAnchor),</span><br><span class="line">    ])</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">makeStackConstraint</span><span class="params">(targetStack: UIView)</span></span> &#123;</span><br><span class="line">    targetStack.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></span><br><span class="line">    <span class="type">NSLayoutConstraint</span>.activate([</span><br><span class="line">      targetStack.heightAnchor.constraint(equalTo: customTabBar.heightAnchor),</span><br><span class="line">      targetStack.widthAnchor.constraint(equalTo: customTabBar.widthAnchor,multiplier: <span class="number">1</span>),</span><br><span class="line">      targetStack.centerYAnchor.constraint(equalTo: customTabBar.centerYAnchor)</span><br><span class="line">    ])</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">makeLeftStackConstraint</span><span class="params">()</span></span> &#123;</span><br><span class="line">    leftStack.leadingAnchor.constraint(equalTo: customTabBar.leadingAnchor,constant: <span class="number">16</span>).isActive = <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//버튼 back이미지</span></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">makeCenterButtonBackImageConstraint</span><span class="params">()</span></span> &#123;</span><br><span class="line">    centerButtonBackImage.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></span><br><span class="line">    </span><br><span class="line">    <span class="type">NSLayoutConstraint</span>.activate([</span><br><span class="line">      centerButtonBackImage.trailingAnchor.constraint(equalTo: customTabBar.trailingAnchor, constant: -<span class="number">16</span>),</span><br><span class="line">      centerButtonBackImage.widthAnchor.constraint(equalToConstant: buttonBackImageSize),</span><br><span class="line">      centerButtonBackImage.heightAnchor.constraint(equalTo: centerButtonBackImage.widthAnchor),</span><br><span class="line">      centerButtonBackImage.topAnchor.constraint(equalTo: customTabBar.topAnchor, constant: -(buttonBackImageSize/<span class="number">2</span>))</span><br><span class="line">      </span><br><span class="line">    ])</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">makeCenterButtonConstraint</span><span class="params">()</span></span> &#123;</span><br><span class="line">    centerButton.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></span><br><span class="line">    </span><br><span class="line">    <span class="type">NSLayoutConstraint</span>.activate([</span><br><span class="line">      centerButton.centerXAnchor.constraint(equalTo: centerButtonBackImage.centerXAnchor),</span><br><span class="line">      centerButton.centerYAnchor.constraint(equalTo: centerButtonBackImage.centerYAnchor),</span><br><span class="line">      centerButton.widthAnchor.constraint(equalToConstant: buttonSize),</span><br><span class="line">      centerButton.heightAnchor.constraint(equalTo: centerButton.widthAnchor),</span><br><span class="line">      centerButton.topAnchor.constraint(equalTo: customTabBar.topAnchor, constant: -(buttonSize/<span class="number">2</span>))</span><br><span class="line">      </span><br><span class="line">    ])</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">makeView</span><span class="params">()</span></span> &#123;</span><br><span class="line">    addSubview(contentView)</span><br><span class="line">    addSubview(customTabBar)</span><br><span class="line">    addSubview(leftStack)</span><br><span class="line">    addSubview(centerButtonBackImage)</span><br><span class="line">    addSubview(centerButton)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">makeItemConstraints</span><span class="params">()</span></span> &#123;</span><br><span class="line">    makeContentViewConstraint()</span><br><span class="line">    makeCustomTabBarConstraint()</span><br><span class="line">    makeStackConstraint(targetStack: leftStack)</span><br><span class="line">    makeLeftStackConstraint()</span><br><span class="line">    makeCenterButtonBackImageConstraint()</span><br><span class="line">    makeCenterButtonConstraint()</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">makeCircleBackButtonImage</span><span class="params">()</span></span> &#123;</span><br><span class="line">    centerButtonBackImage.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">251</span>/<span class="number">255</span>, green: <span class="number">252</span>/<span class="number">255</span>, blue:<span class="number">157</span>/<span class="number">255</span>, alpha:<span class="number">1.0</span>)</span><br><span class="line">    centerButtonBackImage.layer.cornerRadius = buttonBackImageSize / <span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">makeCircleBackButton</span><span class="params">()</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">    centerButton.backgroundColor = .clear<span class="comment">//UIColor(red: 251/255, green: 252/255, blue:157/255, alpha:1.0)</span></span><br><span class="line">    centerButton.setImage(<span class="type">UIImage</span>(systemName: <span class="string">"camera.viewfinder"</span>, withConfiguration: <span class="type">UIImage</span>.<span class="type">SymbolConfiguration</span>(pointSize: <span class="number">24</span>, weight: .bold, scale: .large)), <span class="keyword">for</span>: .normal)</span><br><span class="line">    </span><br><span class="line">    centerButton.tintColor = <span class="type">UIColor</span>.lightGray</span><br><span class="line">    centerButton.layer.cornerRadius = buttonSize / <span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">makeLabelTitle</span><span class="params">()</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">    [leftStack.firstButton,leftStack.secondButton, leftStack.threeButton].forEach&#123;</span><br><span class="line">      $<span class="number">0</span>.backgroundColor = .clear</span><br><span class="line">      $<span class="number">0</span>.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">251</span>/<span class="number">255</span>, green: <span class="number">252</span>/<span class="number">255</span>, blue:<span class="number">157</span>/<span class="number">255</span>, alpha:<span class="number">1</span>)</span><br><span class="line">      $<span class="number">0</span>.tintColor = <span class="type">UIColor</span>.white</span><br><span class="line">      <span class="comment">//  $0.alpha = 0.5</span></span><br><span class="line">      $<span class="number">0</span>.setPreferredSymbolConfiguration(.<span class="keyword">init</span>(scale: .large), forImageIn: .normal)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//symbols 디자인</span></span><br><span class="line">    leftStack.firstButton.setImage(<span class="type">UIImage</span>(systemName: <span class="string">"bubble.left.and.bubble.right.fill"</span>, withConfiguration: <span class="type">UIImage</span>.<span class="type">SymbolConfiguration</span>(pointSize: <span class="number">24</span>, weight: .bold, scale: .large)), <span class="keyword">for</span>: .normal)</span><br><span class="line">    </span><br><span class="line">    leftStack.secondButton.setImage(<span class="type">UIImage</span>(systemName: <span class="string">"timer"</span>,withConfiguration: <span class="type">UIImage</span>.<span class="type">SymbolConfiguration</span>(pointSize: <span class="number">24</span>, weight: .bold, scale: .large)), <span class="keyword">for</span>: .normal)</span><br><span class="line">    </span><br><span class="line">    leftStack.threeButton.setImage(<span class="type">UIImage</span>(systemName: <span class="string">"person"</span>,withConfiguration: <span class="type">UIImage</span>.<span class="type">SymbolConfiguration</span>(pointSize: <span class="number">24</span>, weight: .bold, scale: .large)), <span class="keyword">for</span>: .normal)</span><br><span class="line">    </span><br><span class="line">    leftStack.vecLable.text = <span class="string">""</span></span><br><span class="line">    leftStack.vecLable.frame = <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">40</span>, height: <span class="number">50</span>)</span><br><span class="line">    leftStack.vecLable.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">251</span>/<span class="number">255</span>, green: <span class="number">252</span>/<span class="number">255</span>, blue:<span class="number">157</span>/<span class="number">255</span>, alpha:<span class="number">1</span>)</span><br><span class="line">    <span class="comment">// leftStack.vecLable.alpha = 0.5</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">linkTagNumber</span><span class="params">()</span></span> &#123;</span><br><span class="line">    leftStack.firstButton.tag = <span class="number">0</span></span><br><span class="line">    leftStack.secondButton.tag = <span class="number">1</span></span><br><span class="line">    leftStack.threeButton.tag = <span class="number">2</span></span><br><span class="line">    leftStack.vecLable.tag = <span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">init</span>(frame: <span class="type">CGRect</span>) &#123;</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(frame: frame)</span><br><span class="line">    buttonBackImageSize = buttonSize + <span class="number">10</span></span><br><span class="line">    makeView()</span><br><span class="line">    makeItemConstraints()</span><br><span class="line">    makeLabelTitle()</span><br><span class="line">    makeCircleBackButtonImage()</span><br><span class="line">    makeCircleBackButton()</span><br><span class="line">    linkTagNumber()</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">required</span> <span class="keyword">init</span>?(coder aDecoder: <span class="type">NSCoder</span>) &#123;</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(coder: aDecoder)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ButtonStack</span>: <span class="title">UIView</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> buttonStackView: <span class="type">UIStackView</span> = &#123;</span><br><span class="line">    <span class="keyword">let</span> buttonStackView = <span class="type">UIStackView</span>()</span><br><span class="line">    buttonStackView.axis = .horizontal</span><br><span class="line">    buttonStackView.distribution = .fillEqually</span><br><span class="line">    <span class="keyword">return</span> buttonStackView</span><br><span class="line">  &#125;()</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> firstButton: <span class="type">UIButton</span> = &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">UIButton</span>()</span><br><span class="line">  &#125;()</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> secondButton: <span class="type">UIButton</span> = &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">UIButton</span>()</span><br><span class="line">  &#125;()</span><br><span class="line">  <span class="keyword">let</span> threeButton: <span class="type">UIButton</span> = &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">UIButton</span>()</span><br><span class="line">  &#125;()</span><br><span class="line">  <span class="keyword">let</span> vecLable: <span class="type">UILabel</span> = &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">UILabel</span>()</span><br><span class="line">  &#125;()</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">init</span>(frame: <span class="type">CGRect</span>) &#123;</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(frame: frame)</span><br><span class="line">    </span><br><span class="line">    addSubview(buttonStackView)</span><br><span class="line">    </span><br><span class="line">    buttonStackView.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></span><br><span class="line">    <span class="type">NSLayoutConstraint</span>.activate([</span><br><span class="line">      buttonStackView.widthAnchor.constraint(equalTo: widthAnchor),</span><br><span class="line">      buttonStackView.heightAnchor.constraint(equalTo: heightAnchor),</span><br><span class="line">      buttonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),</span><br><span class="line">      buttonStackView.centerYAnchor.constraint(equalTo: centerYAnchor),</span><br><span class="line">    ])</span><br><span class="line">    </span><br><span class="line">    buttonStackView.addArrangedSubview(firstButton)</span><br><span class="line">    buttonStackView.addArrangedSubview(secondButton)</span><br><span class="line">    buttonStackView.addArrangedSubview(threeButton)</span><br><span class="line">    buttonStackView.addArrangedSubview(vecLable)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">required</span> <span class="keyword">init</span>?(coder aDecoder: <span class="type">NSCoder</span>) &#123;</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(coder: aDecoder)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>TabbarView에 대한 정보. 레이아웃, 디자인, addsubView, 모두 이쪽에서 해주면 된다.</li>
+<li>카메라 버튼이 하나 있는 데, 그건 그냥 버튼일 뿐이고, 마치 탭바에 있는 것처럼 레이아웃을 잡아주면 되는 방식이다.</li>
+<li>vecLable는 스택뷰의 tag=3에 대한 정보인데, 거의 Nil이라고보면 된다. 이 위에 카메라 버튼 이 와야하는 부분이고, 스택뷰 비율 예쁘게 맞춰야해서… 버튼 추가보다 레이블을 추가하여 맞췄다.</li>
+</ul>
+<h3 id="tabbar-실선-없애기?"><strong>Tabbar 실선 없애기?</strong><a title="#tabbar-실선-없애기?" href="#tabbar-실선-없애기?"></a></h3>
+<p>여기서 좀 헤맸는데,</p>
+<p><img src="/image/tabbar1.png" class="lazyload" data-srcset="/image/tabbar1.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>일단 미리보여주자면, 위 코드로 작성되면 이렇게 나온다. (아직 탭바 콘트롤러 작성적이기 때문에 안보이실 것…)</p>
+<p>아, 저 위에 검정 실선 너무 거슬려 해서 없애려한게 이 것의 발단…</p>
+<p><img src="/image/tabbar2.png" class="lazyload" data-srcset="/image/tabbar2.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">customTabBar.backgroundImage = <span class="type">UIImage</span>()</span><br><span class="line">customTabBar.shadowImage = <span class="type">UIImage</span>()</span><br><span class="line"><span class="comment">// customTabBar.barTintColor = UIColor(red: 251/255, green: 252/255, blue:157/255, alpha:1)</span></span><br></pre></td></tr></table></figure>
+<p>navigationvar생략도 약간 비슷한 방식으로 없애서, tabbar에 적용해보았더니 되었다 ㅋㅋ 그런데??<br>
+옆에 애들이 날아갔다… 왜지?, ㅡㅡ;;;;</p>
+<p>다시 부랴부랴 색을 채우려고 코드 이것저것 적용해보고… 결국 알파값을 0.5 씩 낮춰봤는데…</p>
+<p><img src="image/tabbar3.png" class="lazyload" data-srcset="image/tabbar3.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>아… 탭바 위에 스택뷰 backgroundColor 때문에 동일하게 알파 0.5 씩 줬음에도, 탭바 부분은 0.5+0.5 가 겹쳐져 더 진하게 보인다.<br>
+(틴트 컬러나 백그라운드 컬러에서 알파를 낮추는게 아니라, 탭바.알파 = 0.5 로 직접 적용해야함. 주석 보면 알 수 있음!!)</p>
+<p>그렇다면 ?</p>
+<p><img src="image/tabbar4.png" class="lazyload" data-srcset="image/tabbar4.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>일단, 실선을 없애려면</p>
+<p><strong>backgroundImage</strong> 와 <strong>shadowImage</strong> 를 줘야하는게 맞다.</p>
+<p>그러면 tabbar에 대한 이미지 처리가 <strong>완전히</strong> 없어진 것이기 때문에,<br>
+스택뷰의 backgroundColor로 tabbar의 색을 대신해 주는 것이다.<br>
+그래서 노란 영역은 탭바가 아닌 스택뷰의 영역인 것…!!!</p>
+<p>그래서 위에 vecLabel을 추가한 것이다… 간격 맞추려고… vacLable에 프레임도 주고 배경색도 동일하게 준 것 !!</p>
+<p><img src="image/tabbar5.png" class="lazyload" data-srcset="image/tabbar5.png" srcset="data:image/png;base64,666" alt="" class="φcx lazyload"></p>
+<p>눈이 아파서 일단 이 정도로 마무리…</p>
+<p>디자인은 아직 나온게 아니니까…</p>
+<p><s>이거하면서 느꼈다. 나 디자인 개못하구나…🐶</s></p>
+<p>이제 마지막이다.</p>
+<h2 id="custom-tabbar">Custom Tabbar<a title="#custom-tabbar" href="#custom-tabbar"></a></h2>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomTabbar</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> chatVC: <span class="type">ChatlistViewController?</span></span><br><span class="line">    <span class="keyword">var</span> snsVC: <span class="type">SNSViewController?</span></span><br><span class="line">    <span class="keyword">var</span> mywriteVC: <span class="type">MyWriteHistoryViewController?</span></span><br><span class="line">    <span class="keyword">var</span> vcList = [<span class="type">UIViewController</span>]()</span><br><span class="line">    <span class="keyword">var</span> prevIndex: <span class="type">Int?</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">linkAction</span><span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</span><br><span class="line">        checkView()</span><br><span class="line">        prevIndex = sender.tag</span><br><span class="line">        moveView(sender.tag)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/// 새로운 뷰를 만들기 전에 기본의 뷰가 있으면 그 뷰를 제거한다.</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">checkView</span><span class="params">()</span></span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> prevSelectedIndex = prevIndex <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vcList[prevSelectedIndex].willMove(toParent: <span class="literal">nil</span>)</span><br><span class="line">        vcList[prevSelectedIndex].view.removeFromSuperview()</span><br><span class="line">        vcList[prevSelectedIndex].removeFromParent()</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/// 새로운 뷰로 이동한다.</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">moveView</span><span class="params">(<span class="number">_</span> index: Int)</span></span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> targetView = view <span class="keyword">as</span>? <span class="type">CustomTabbarView</span> <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">        addChild(vcList[index])</span><br><span class="line">        targetView.contentView.addSubview(vcList[index].view)</span><br><span class="line">        vcList[index].view.frame = targetView.contentView.bounds</span><br><span class="line">        vcList[index].didMove(toParent: <span class="keyword">self</span>)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">moveWriteView</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> vc = <span class="type">CameraViewController</span>()</span><br><span class="line">        present(vc,animated: <span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">///각 탭바의 아이템들을 액션에 연결한다.</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">linkTargetAction</span><span class="params">()</span></span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> targetView = view <span class="keyword">as</span>? <span class="type">CustomTabbarView</span> <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        targetView.leftStack.firstButton.addTarget(<span class="keyword">self</span>, action: #selector(linkAction), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">        targetView.leftStack.secondButton.addTarget(<span class="keyword">self</span>, action: #selector(linkAction), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">        targetView.leftStack.threeButton.addTarget(<span class="keyword">self</span>, action: #selector(linkAction), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">    </span><br><span class="line">        targetView.centerButton.addTarget(<span class="keyword">self</span>, action: #selector(moveWriteView), <span class="keyword">for</span>: .touchUpInside)</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">makeViewList</span><span class="params">()</span></span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> views = [chatVC, snsVC, mywriteVC] <span class="keyword">as</span>? [<span class="type">UIViewController</span>] <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        vcList = views</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  <span class="comment">//탭바뷰</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">loadView</span><span class="params">()</span></span> &#123;</span><br><span class="line">        view = <span class="type">CustomTabbarView</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        </span><br><span class="line">        chatVC = <span class="type">ChatlistViewController</span>()</span><br><span class="line">        snsVC = <span class="type">SNSViewController</span>()</span><br><span class="line">        mywriteVC = <span class="type">MyWriteHistoryViewController</span>()</span><br><span class="line">        </span><br><span class="line">        makeViewList()</span><br><span class="line">        linkTargetAction()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/// 뷰가 로딩이 다 되고 난 뒤 기본 뷰를 셋팅한다.</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> prevIndex == <span class="literal">nil</span> &#123;</span><br><span class="line">            prevIndex = <span class="number">0</span></span><br><span class="line">            moveView(<span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>드디어 탭바컨트롤러!! 읽으면 대충 감은 온다… ㅎㅎ</li>
+</ul>
+<p>(이 부분은 포스팅 맨 위에 작성된 첫번째 방법 참고 링크를 보면 좀 더 이해가 쉽다.!!)</p>
+<p><a href="https://milyo-codingstories.tistory.com/m/11" target="_blank">링크!</a></p>
+<p>일단 이정도로 글을 마치고,</p>
+<p>시간이 남으면 스크롤시 사라지는 것, tabbar아이템 클릭시의 애니매이션을 추가할 계획이다.</p>
+
+  
+    <div class='div-ori-link'>
+      <a class='ori-link' href='/2020/08/07/Swift-Custom-Tabbar'>
+        Read Original
+      </a>
+    </div>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://qussk.github.io/2020/08/08/Swift-Custom-Tabbar/>https://qussk.github.io/2020/08/08/Swift-Custom-Tabbar/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-14T17:28:54+09:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>업데이트：Sep 14, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Swift/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Swift</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Tabbar/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Tabbar</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://qussk.github.io/2020/08/08/Swift-Custom-Tabbar/&title=[Swift]Custom Tabbar - Qussk&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://qussk.github.io/2020/08/08/Swift-Custom-Tabbar/&title=[Swift]Custom Tabbar - Qussk&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://qussk.github.io/2020/08/08/Swift-Custom-Tabbar/&title=[Swift]Custom Tabbar - Qussk&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2020/08/08/Swift-Contacts-%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%A0%95%EB%B3%B4%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>[Swift]Contacts - 연락처 정보가져오기</p>
+          <p class='content'>Contacts을 이용하여, 앱으로 연락처 정보를 가져오기,!
+들어가기 전에 아래 CNContact에 대한 애플문서를 확인하자.
+링크 : https://developer.ap...</p>
+        </a>
+      
+      
+        <a class='next' href='/2020/08/08/POST/weak-self/'>
+          <p class='title'>weak self<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>weak self
+클로저함수 내부에서 self를 캡쳐하는 문법인거 같다
+시간날때… 정리해보자.
+참조
+
+
+https://yagom.net/forums/topic/closure%...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1.-baseview"><span class="toc-text">1. BaseView</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2.-firstview-~-..."><span class="toc-text">2. firstView ~ …</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3.-tabbarview"><span class="toc-text">3. TabbarView</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tabbar-실선-없애기?"><span class="toc-text">Tabbar 실선 없애기?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#custom-tabbar"><span class="toc-text">Custom Tabbar</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+        
+        
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="[Swift]Custom Tabbar";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+</script>
+
+        
+      </div>
+      
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.1" target="_blank" class="codename">Volantis</a>
+        as theme
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+      <a id="s-top" class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+  </div>
+  <div>
+    <script>
+window.volantis={};
+/********************脚本懒加载函数********************************/
+function loadScript(src, cb) {
+var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+var script = document.createElement('script');
+script.setAttribute('type','text/javascript');
+if (cb) script.onload = cb;
+script.setAttribute('src', src);
+HEAD.appendChild(script);
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+  
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: path,
+      appId: "",
+      appKey: "",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'en',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      recordIP: 'false',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+
+  
+    
+<script src="/js/search.js"></script>
+
+  
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+(function ($) {
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+})(jQuery);
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://Qussk.github.io' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://Qussk.github.io' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://Qussk.github.io' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+<!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  
+</div>
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#l_cover",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+      window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // 
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
+        
+        
+        
+        
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>
