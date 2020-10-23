@@ -56,6 +56,31 @@
     
     
     <entry>
+      <title>[git] git 사용정리</title>
+      <link href="2020/10/17/git-git-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5/"/>
+      <url>2020/10/17/git-git-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5/</url>
+      
+        <content type="html"><![CDATA[<h3 id="commit,-pull-취소하기">commit, pull 취소하기<a title="#commit,-pull-취소하기" href="#commit,-pull-취소하기"></a></h3><ul><li>리셋</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset 헤드이름(master,develop)</span><br></pre></td></tr></table></figure><h3 id="commit-메세지-수정하기">commit 메세지 수정하기<a title="#commit-메세지-수정하기" href="#commit-메세지-수정하기"></a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend -m &quot;test : new workspasce&quot; &#x2F;&#x2F;수정 </span><br><span class="line">git push -f &#x2F;&#x2F;커밋내용 갱신</span><br></pre></td></tr></table></figure><h3 id="devleop에-있는-내용---&gt;-master로-보내기">devleop에 있는 내용 --&gt; master로 보내기<a title="#devleop에-있는-내용---&gt;-master로-보내기" href="#devleop에-있는-내용---&gt;-master로-보내기"></a></h3><ul><li>머지하기</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master &#x2F;&#x2F;master로 이동</span><br><span class="line">git merge develop &#x2F;&#x2F;디벨로프 내용 머지</span><br></pre></td></tr></table></figure><h3 id="로그-보기(히스토리-확인)">로그 보기(히스토리 확인)<a title="#로그-보기(히스토리-확인)" href="#로그-보기(히스토리-확인)"></a></h3><ul><li>머지~커밋 기록을 볼 수 있다.</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line">git log -stat &#x2F;&#x2F;어떤 파일이 추가,삭제된 부분까지 볼 수 있다. </span><br><span class="line">git log --graph &#x2F;&#x2F;그래프로 볼 수 있다. (신기!)</span><br><span class="line">git log -3 &#x2F;&#x2F;최근 머지~커밋한 기록을 3개 볼 수 있다.</span><br></pre></td></tr></table></figure><h3 id=""><a title="#" href="#"></a></h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 기타 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>REST API - Codable</title>
       <link href="2020/10/13/POST/REST-API-Codable/"/>
       <url>2020/10/13/POST/REST-API-Codable/</url>
